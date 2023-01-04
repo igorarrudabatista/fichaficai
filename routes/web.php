@@ -7,16 +7,19 @@ use App\Http\Controllers\{
     HomeController,
     AlunosController,
     FichaController,
-    PainelGerencialController
+    PainelGerencialController,
+    UsuariosController,
 
 };
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/painel', function () {
+    return view('painel');
+})->middleware(['auth', 'verified'])->name('painel');
 
 Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
+
 
 Route::middleware('auth')->group(function () {
 
@@ -37,6 +40,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/ficha/table', [FichaController::class, 'home']);
 Route::get('/ficha/form',  [FichaController::class, 'create']);
 
+Route::get('/ficha/update/Conselho1/{id}',           [FichaController::class, 'Conselho1']);
+Route::get('/ficha/update/Conselho2/{id}',           [FichaController::class, 'Conselho2']);
+Route::get('/ficha/update/Conselho3/{id}',           [FichaController::class, 'Conselho3']);
+
 ////// PAINEL GERENCIAL (DASHBOARD)
 Route::get('/painel', [PainelGerencialController::class, 'dashboard']);
 
@@ -54,6 +61,20 @@ Route::get('/painel/cadastro/cadastro_polo',       [PainelGerencialController::c
 Route::get('/painel/cadastro/cadastro_prazo',      [PainelGerencialController::class, 'cadastro_prazo']);
 Route::get('/painel/cadastro/cadastro_serie',      [PainelGerencialController::class, 'cadastro_serie']);
 
+
+// ---------USUARIOS GET
+Route::get('/usuarios/listar_usuarios',               [UsuariosController::class, 'listar_usuarios']);
+Route::get('/usuarios/perfil_usuarios',               [UsuariosController::class, 'perfil_usuarios']);
+Route::get('/usuarios/atribuir_perfil_usuarios',      [UsuariosController::class, 'atribuir_perfil_usuarios']);
+Route::get('/usuarios/form_usuarios',                 [UsuariosController::class, 'form_usuarios']);
+
+// ---------USUARIOS POST
+Route::post('/usuarios/atribuir_perfil',              [UsuariosController::class, 'atribuir_perfil_usuarios_store']);
+Route::post('/usuarios',                              [UsuariosController::class, 'store_usuarios']);
+
+/////LOGOUT
+Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+->name('logout');
 
 
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\TB_FICHA;
-use App\Models\TB_CATEGORIA;
-use App\Models\TB_ESCOLA;
-use App\Models\TB_ALUNO;
+use App\Models\FICHA;
+use App\Models\CATEGORIA;
+use App\Models\ESCOLA;
+use App\Models\ALUNO;
 
 
 class FichaController extends Controller
@@ -16,71 +16,123 @@ class FichaController extends Controller
 
           
         
-     $ficha = TB_FICHA::with('tb_categoria', 'tb_escola')->get();
+ //    $ficha = FICHA::with('Categoria')->get();
 
- //    $ficha = TB_FICHA::all();
-      $ficha_categoria = TB_CATEGORIA::all();
-      $ficha_escola = TB_ESCOLA::all();
-      $ficha_aluno = TB_ALUNO::all();
+      $ficha     = FICHA::all();
+      $categoria = CATEGORIA::all();
+      $escola    = ESCOLA::all();
+      $aluno     = ALUNO::all();
        // $ficha = Produto::paginate(10);
 
-         $search = request('search');
-
-         if($search) {
-             $ficha = TB_FICHA::where ([['FicaiId', 'like', '%'.$search. '%' ]])->get();
-
-              } else {
-                 $ficha = TB_FICHA::all();
-             }
         
 
        // return view('ficha.table');
-        return view('ficha.table', ['ficha'=> $ficha, 
-        'ficha_categoria' => $ficha_categoria, 
-        'ficha_escola' => $ficha_escola,
-        'ficha_aluno' => $ficha_aluno,
-        'search' => $search]);
+        return view('ficha.table', [
+        'ficha'=> $ficha, 
+        'categoria' => $categoria, 
+        'escola' => $escola,
+        'aluno' => $aluno,
+        
+        ]);
 
 
         // return view('ficha.table'    
   
 }
 
-public function create() {
-
-    return view('ficha.form'   
-
-);
-
-    }
+public function update(Request $request, $id)
+{
 
 
-    public function store (Request $request) {
+$ficha = FICHA::find($id);
+
+// $FICHA = FICHA::create($request->all());
+    
+ FICHA::findOrFail($request->id)->update($request->all());
+   
+   // Orcamento::findOrFail($request->id) -> update();
+   
+   $ficha->save();
+
+   
+
+    
+//  toast('Orçamento editado com sucesso!','success');
+
+    return redirect('/ficha/table');
+}
+
+
+public function Conselho1(Request $request, $id)    {
+
+    $ficha = FICHA::find($id);
+    $conselho1 = 'Conselho1';
+    $ficha -> FichaStatus   = $conselho1;
+    $ficha -> save();
+         
+    //   toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ','success');
+
+      return redirect('/ficha/table');
+  }
+public function Conselho2(Request $request, $id)    {
+
+    $ficha = FICHA::find($id);
+    $conselho2 = 'Conselho2';
+    $ficha -> FichaStatus   = $conselho2;
+    $ficha -> save();
+         
+    //   toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ','success');
+
+      return redirect('/ficha/table');
+  }
+public function Conselho3(Request $request, $id)    {
+
+    $ficha = FICHA::find($id);
+    $conselho3 = 'Conselho3';
+    $ficha -> FichaStatus   = $conselho3;
+    $ficha -> save();
+         
+    //   toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ','success');
+
+      return redirect('/ficha/table');
+  }
+
+
+// public function create() {
+
+//     return view('ficha.form'   
+
+// );
+
+//     }
+
+
+//     public function store (Request $request) {
         
         
-        $nova_Ficha =  new Nova_Ficha;
+//         $nova_Ficha =  new Nova_Ficha;
         
-        $nova_Ficha -> Nome_Produto       = $request->Nome_Produto;
-        $nova_Ficha -> Categoria_Produto  = $request->Categoria_Produto;
-        $nova_Ficha -> Status_Produto     = $request->Status_Produto;
-        $nova_Ficha -> Preco_Produto      = $request->Preco_Produto;
-        $nova_Ficha -> Estoque_Produto    = $request->Estoque_Produto;
-        $nova_Ficha -> Quantidade_Produto = $request->Quantidade_Produto;
+//         $nova_Ficha -> Nome_Produto       = $request->Nome_Produto;
+//         $nova_Ficha -> Categoria_Produto  = $request->Categoria_Produto;
+//         $nova_Ficha -> Status_Produto     = $request->Status_Produto;
+//         $nova_Ficha -> Preco_Produto      = $request->Preco_Produto;
+//         $nova_Ficha -> Estoque_Produto    = $request->Estoque_Produto;
+//         $nova_Ficha -> Quantidade_Produto = $request->Quantidade_Produto;
         
         
-        // Imagem do produto upload
+//         // Imagem do produto upload
       
         
-        $nova_Ficha ->save();
+//         $nova_Ficha ->save();
         
-        $criar_produto = Produto::all();
+//         $criar_produto = Produto::all();
         
-        toast('Produto criado com sucesso!','success');
+//         toast('Produto criado com sucesso!','success');
 
-       return redirect('/produtos/produtos');
+//        return redirect('/produtos/produtos');
 
          
 
-    }
+//     }
     
 }

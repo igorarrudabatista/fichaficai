@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TB_ALUNO extends Model
+class ESCOLA extends Model
 
 
 {
     use HasFactory;
-    protected $table = 'TB_ALUNO';
+    protected $table = "escola";
 
     // protected $fillable = [
     //     'FichaStatus',
@@ -20,8 +20,8 @@ class TB_ALUNO extends Model
         
     // ];
 
-    public function TB_FICHA() {
-        return $this->belongsTo(TB_FICHA::class);
+    public function FICHA() {
+        return $this->belongsTo(FICHA::class);
         }      
      
 }

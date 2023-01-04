@@ -68,10 +68,11 @@
 
                     
                     <ul class="submenu ">
-                        
+                        @can('administrador', 'seduc_users')
                         <li>
                             <a href="{{asset('/alunos/form_alunos')}}">Cadastrar</a>
                         </li>
+                        @endcan
                         
                         <li>
                             <a href="{{asset('/alunos/alunos')}}">Ver Alunos</a>
@@ -120,8 +121,33 @@
                     
                 </li>
         
-            
-                
+                <li class="sidebar-item  has-sub">
+
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="user" width="20"></i> 
+                        <span>Usuários</span>
+                    </a>
+
+                    <ul class="submenu ">
+                        
+                        <li>
+                            <a href="/usuarios/listar_usuarios">Ver Usuários</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/usuarios/form_usuarios">Criar Usuários</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/usuarios/perfil_usuarios">Perfil de Usuários</a>
+                        </li>
+                  
+                        <li>
+                            <a href="/usuarios/atribuir_perfil_usuarios">Atribuir Perfil ao Usuário</a>
+                        </li>
+                        
+                    </ul>
+                </li>
                 <li class="sidebar-item  ">
 
                     <a href="form-editor.html" class='sidebar-link'>
@@ -351,11 +377,11 @@
                                 <a class="dropdown-item active" href="#"><i data-feather="mail"></i> Messages</a>
                                 <a class="dropdown-item" href="#"><i data-feather="settings"></i> Configurações</a>
                                 <div class="dropdown-divider"></div>
-                                <form method="POST" action="{{ route('logout') }}">
+                                {{-- <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <a class="dropdown-item" href="route('logout')"
                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();" ><i data-feather="log-out"></i> Sair</a>                            </div>
+                                                this.closest('form').submit();" ><i data-feather="log-out"></i> Sair</a>                            </div> --}}
                         </li>
                     </ul>
                 </div>
