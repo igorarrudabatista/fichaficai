@@ -43,5 +43,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    
+    public function home() {
+
+         
+        $permission = \Spatie\Permission\Traits\HasRoles::create(['name' => 'edit articles']);
+         return view('base.base', [
+        'permission' => $permission
+         ]      
+         );}
 }

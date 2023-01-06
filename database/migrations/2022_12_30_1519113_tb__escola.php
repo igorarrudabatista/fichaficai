@@ -28,7 +28,9 @@ return new class extends Migration
             $table->string('EscolaEmail');
             $table->string('EscolaStatus');
             
-  
+            // $table->unsignedInteger('aluno_id');
+            // $table->foreign('aluno_id')->references('id')->on('aluno');                 
+             
             $table->timestamps();
         });
     }

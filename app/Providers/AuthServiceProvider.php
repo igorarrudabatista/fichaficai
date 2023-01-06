@@ -2,8 +2,14 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Models\FICHA;
+use App\Models\CATEGORIA;
+use App\Models\ESCOLA;
+use App\Models\ALUNO;
+use App\Models\User;
+
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +31,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::define('ver-ficha', function(User $user, FICHA $ficha){
+            return $user->id === $ficha->id;
+        });
         //
     }
 }

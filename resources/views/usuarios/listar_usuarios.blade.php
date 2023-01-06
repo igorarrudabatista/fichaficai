@@ -52,7 +52,7 @@
                            
                            <td>{{$usuarios->email ?? 'Sem registros'}}</td>
 
-                            <td>{{$permissions->name ?? ''}} </td>
+                            <td>{{$usuarios->perfil_acesso ?? ''}} </td>
 
                            <td>{{$usuarios->created_at ??  'Sem registros'}} </td>
                            <td>{{$usuarios->updated_at ??  'Sem registros'}} </td>

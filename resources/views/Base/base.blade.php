@@ -68,9 +68,9 @@
 
                     
                     <ul class="submenu ">
-                        @can('administrador', 'seduc_users')
+                        @can('Escola')
                         <li>
-                            <a href="{{asset('/alunos/form_alunos')}}">Cadastrar</a>
+                            <a href="{{asset('/alunos/form_alunos')}}">Cadastrar Alunos</a>
                         </li>
                         @endcan
                         
@@ -97,8 +97,9 @@
                         </li>
                         
                         <li>
-                            <a href="{{asset('/ficha/form')}}">Criar Fichas</a>
-                        </li>
+                            <a href="{{asset('/ficha/form')}}">Criar Fichas (escola)</a>
+                        </li>  
+
                         <li>
                             <a href="{{asset('/ficha/form')}}">Minhas Fichas</a>
                         </li>

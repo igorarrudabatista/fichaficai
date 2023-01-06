@@ -13,24 +13,24 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categoria', function (Blueprint $table) {
+        Schema::create('perfil', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('categoria_id');
-            $table->string('FichaCatSts');
-  
+            $table->string('Nome_perfil');
+            $table->string('status');
+
+
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
-     * 
-     * 	[FichaCatId] [int] IDENTITY(1,1) NOT NULL,
-	
+     *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('categoria');
+        Schema::dropIfExists('perfil');
 
     }
 };

@@ -19,6 +19,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('grupo')->nullable();
+            $table->string('perfil_acesso')->nullable();
+            // $table->unsignedInteger('perfil_id');
+            // $table->foreign('perfil_id')->references('id')->on('perfil');
+            
+           
             $table->rememberToken();
             $table->timestamps();
         });

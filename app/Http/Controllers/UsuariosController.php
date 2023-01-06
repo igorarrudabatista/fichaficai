@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Spatie\Permission\Models\Role;
+
 use Spatie\Permission\Models\Permission;
 use App\Models\Permissions;
 use App\Models\model_has_permissions;
@@ -12,6 +14,14 @@ use Spatie\Permission\Traits\HasRoles;
 
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+
+
+use App\Models\FICHA;
+use App\Models\CATEGORIA;
+use App\Models\ESCOLA;
+use App\Models\ALUNO;
+use App\Models\PERFIL;
+
 
 class UsuariosController extends Controller
 {
@@ -29,10 +39,13 @@ class UsuariosController extends Controller
 
     public function form_usuarios() {
 
-        $perfil = \Spatie\Permission\Models\Permission::all();
+        $perfil = PERFIL::all();
+        $escola    = ESCOLA::all();
+
     
         return view('usuarios.form_usuarios', [
-            'perfil' => $perfil 
+            'perfil' => $perfil, 
+            'escola' => $escola
         ]); 
 
     }
@@ -70,23 +83,14 @@ class UsuariosController extends Controller
 
     public function store_usuarios(Request $request) {
 
-        $usuario           =     new User;
-        $usuario->name     =     $request->name;
-        $usuario->email    =     $request->email;
-        $usuario->password =     bcrypt($request->password);
+        $usuario                 =     new User;
+        $usuario->name           =     $request->name;
+        $usuario->email          =     $request->email;
+        $usuario->perfil_acesso  =     $request->perfil_acesso;
+        $usuario->password       =     bcrypt($request->password);
 
-        $usuario -> givePermissionTo ($request->perfil);
-        
         $usuario-> save();
-        
-  //      $permission ->givePermissionTo($request->input($permission));
-        
 
-      //  $role = Role::create(['name' => $request->input('name')]);
-
-//        $role->syncPermissions($request->input('permission'));
-
-
-                return view ('usuarios.form_usuarios');
+                return view ('usuarios.listar_usuarios');
     }
 }

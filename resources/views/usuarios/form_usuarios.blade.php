@@ -82,11 +82,10 @@
                                         <label for="email-id-column">Atribuir Perfil</label>
                                         <div class="position-relative">
 
-                                            <select  name="perfil "class="choices form-select">
-                                               @foreach($perfil as $perfis) 
-                                               <option value="{{$perfis->id}}">{{$perfis->name}}</option>
-                              
-                                                @endforeach 
+                                            <select  name="perfil_acesso"class="choices form-select">
+                                               @foreach($perfil as $perfils) 
+                                               <option value="{{$perfils->Nome_perfil}}">{{$perfils->Nome_perfil}}</option>
+                                               @endforeach 
                                             </select>
                                             
                                     </div>

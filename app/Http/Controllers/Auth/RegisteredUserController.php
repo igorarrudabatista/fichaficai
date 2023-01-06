@@ -43,7 +43,8 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ])->givePermissionTo('usuario');
+        ]);
+        // ])->givePermissionTo('usuario');
 
         event(new Registered($user));
 

@@ -8,6 +8,7 @@ use App\Models\FICHA;
 use App\Models\CATEGORIA;
 use App\Models\ESCOLA;
 use App\Models\ALUNO;
+use Illuminate\Support\Facades\Gate;
 
 
 class FichaController extends Controller
@@ -19,12 +20,12 @@ class FichaController extends Controller
  //    $ficha = FICHA::with('Categoria')->get();
 
       $ficha     = FICHA::all();
+    //  Gate::authorize('ver-ficha', $ficha);  
       $categoria = CATEGORIA::all();
       $escola    = ESCOLA::all();
       $aluno     = ALUNO::all();
        // $ficha = Produto::paginate(10);
 
-        
 
        // return view('ficha.table');
         return view('ficha.table', [
@@ -98,13 +99,26 @@ public function Conselho3(Request $request, $id)    {
   }
 
 
-// public function create() {
+ public function create() {
 
-//     return view('ficha.form'   
+  $ficha     = FICHA::all();
+  $categoria = CATEGORIA::all();
+  $escola    = ESCOLA::all();
+  $aluno     = ALUNO::all();
 
-// );
+  return view('ficha.form', [
+    'ficha'=> $ficha, 
+    'categoria' => $categoria, 
+    'escola' => $escola,
+    'aluno' => $aluno,
+   
+    
+    ]);
 
-//     }
+ 
+
+
+     }
 
 
 //     public function store (Request $request) {

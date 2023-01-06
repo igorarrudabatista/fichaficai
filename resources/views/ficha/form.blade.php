@@ -78,7 +78,9 @@
                                                     <h5 class="card-title justify-content-md-center">IDENTIFICAÇÃO DA ESCOLA</h5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <code> Lotação: </code>Escola aqui <code> Endereço:  </code> Endereço aqui</code> 
+                                                    <code> Lotação: </code> Escola 
+                                                   
+                                                     <code> Endereço:  </code> Endereço aqui</code> 
                                                     <code>Telefone: </code> 65 99999 <code> Município: </code> Cuiabá <code> UF: </code> MT   </p>
 
                                                 </div>
@@ -87,8 +89,8 @@
                                                     <h6 class="card-title">IDENTIFICAÇÃO DO ESTUDANTE</h5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <code> Nome do Aluno: </code> Nome do aluno aqui
-                                                    <code> Endereço: </code> Endereço do aluno
+                                                    <code> Nome do Aluno: </code> Aluno
+                                                    <code> Endereço: </code> Endereço
                                                     <code> Telefone: </code> Telefone
                                                     <code> Município: </code> Municipio
                                                     <code> UF: </code> MT
@@ -96,6 +98,8 @@
                                                     <code> Data de Nascimento: </code> 13/10/1985
                                                     <code> Ano: </code> 6a Série 
                                                     <code> Turno: </code> Matutino 
+
+                                                  
                                                                                                         </div>
                                             </div>
                                       
@@ -142,12 +146,13 @@
                                                                                     <h6>Selecione o Motivo do Encaminhamento:</h6>
 
                                                                                     <div class="form-group">
-                                                                                        <select class="choices form-select">
-                                                                                            <option value="square">Motivo 1</option>
-                                                                                            <option value="rectangle">Motivo 2</option>
-                                                                                            <option value="rombo">Motivo 3</option>
-                                                                     
-                                                                                        </select>
+
+                                                                                            <select  name="perfil "class="choices form-select">
+                                                                                                @foreach($categoria as $categorias) 
+                                                                                                <option value="{{$categorias->FichaCatSts}}">{{$categorias->FichaCatSts ?? 'Nada aqui'}}</option>
+                                                                                                
+                                                                                            </select>
+                                                                                            @endforeach 
                                                                                     </div>
 
                                                                                 <label for="first-name-column">Nome do Responsável pelo Encmainhento</label>
@@ -160,9 +165,7 @@
                                                                                 <input type="text" id="last-name-column" class="form-control" placeholder="000.000.000-00"
                                                                                     name="lname-column">
                                                                             </div>
-
-                                                                                
-                                                                                    
+                                                                                  
                                                                                     <div class="card-body">
                                                                                         <h4 class="card-title">Escreva o motivo</h4>
                                                                                         <div id="full">
